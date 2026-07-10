@@ -2,7 +2,6 @@ package com.example.pushpull
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
@@ -14,12 +13,12 @@ import com.example.pushpull.databinding.RoutineEntryBinding
  * TODO: Replace the implementation with code for your data type.
  */
 class RoutineListAdapter(
-    private val values: List<PlaceholderItem>
-) : RecyclerView.Adapter<RoutineListAdapter.ViewHolder>() {
+    private val routines: List<RoutineContent.RoutineItem> = RoutineContent.defaultRoutines
+) : RecyclerView.Adapter<RoutineListAdapter.RoutineViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutineViewHolder {
 
-        return ViewHolder(
+        return RoutineViewHolder(
             RoutineEntryBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -29,20 +28,18 @@ class RoutineListAdapter(
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+    override fun onBindViewHolder(holder: RoutineViewHolder, position: Int) {
+        val routine = routines[position]
+        holder.name.text = routine.name
     }
 
-    override fun getItemCount(): Int = values.size
+    override fun getItemCount(): Int = routines.size
 
-    inner class ViewHolder(binding: RoutineEntryBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+    inner class RoutineViewHolder(binding: RoutineEntryBinding) : RecyclerView.ViewHolder(binding.root) {
+        val name: TextView = binding.routineName
 
         override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+            return super.toString() + " '" + name + "'"
         }
     }
 

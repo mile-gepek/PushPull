@@ -10,9 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.pushpull.placeholder.PlaceholderContent
 
-/**
- * A fragment representing a list of Items.
- */
 class RoutineListFragment : Fragment() {
 
     private var columnCount = 1
@@ -38,7 +35,7 @@ class RoutineListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = RoutineListAdapter(PlaceholderContent.ITEMS)
+                adapter = RoutineListAdapter()
             }
         }
         return view
@@ -46,10 +43,8 @@ class RoutineListFragment : Fragment() {
 
     companion object {
 
-        // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
             RoutineListFragment().apply {
