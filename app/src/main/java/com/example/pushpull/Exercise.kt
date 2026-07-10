@@ -1,6 +1,10 @@
 package com.example.pushpull
 
+import kotlinx.serialization.Serializable
 
-data class Set(var weightKg: Double, var reps: Float)
 
-data class Exercise(var name: String, val sets: MutableList<Set>)
+@Serializable
+data class ExerciseSet(var weightKg: Double, var reps: Double)
+
+@Serializable
+data class Exercise(var name: String, val exerciseSets: MutableList<ExerciseSet>)

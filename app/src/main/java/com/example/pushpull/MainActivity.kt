@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.binding.viewPager2.adapter = MainPagerAdapter(this)
-//        this.binding.viewPager2.offscreenPageLimit = 1
 
         TabLayoutMediator(
             this.binding.tabLayout, this.binding.viewPager2, false, true
