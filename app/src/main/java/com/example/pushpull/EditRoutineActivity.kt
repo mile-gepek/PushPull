@@ -22,12 +22,11 @@ class EditRoutineActivity: AppCompatActivity() {
         this.binding = ActivityEditRoutinesBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
 
-
-//        this.binding.EditRoutineName.(routine.name)
-
-
         val routineAsJson = intent.getStringExtra("routine")!!
         this.routine = Json.decodeFromString<RoutineContent.RoutineItem>(routineAsJson)
+
+
+        this.binding.editRoutineName.setText(routine.name)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

@@ -29,17 +29,17 @@ class RoutineListAdapter(
         val routine = routines[position]
         holder.binding.routineName.text = routine.name
 
+        holder.binding.layout.setOnClickListener { anchorView ->
+            editRoutine(routine, anchorView.context)
+        }
+
         holder.binding.menuButton.setOnClickListener { anchorView ->
             val menu = PopupMenu(anchorView.context, anchorView)
             menu.menuInflater.inflate(R.menu.routine_menu, menu.menu)
             menu.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.routine_edit -> {
-                        val routineAsJson = Json.encodeToString(routine)
-                        val intent = Intent(anchorView.context, EditRoutineActivity::class.java).apply {
-                            putExtra("routine", routineAsJson)
-                        }
-                        anchorView.context.startActivity(intent)
+                        editRoutine(routine, anchorView.context)
                         true
                     }
                     R.id.routine_delete -> {
@@ -51,6 +51,28 @@ class RoutineListAdapter(
             }
             menu.show()
         }
+
+        holder.binding.startRoutineButton.setOnClickListener { anchorView ->
+            startRoutine(routine, anchorView.context)
+        }
+    }
+
+
+    fun startRoutine(routine: RoutineContent.RoutineItem, context: Context) {
+        val routineAsJson = Json.encodeToString(routine)
+        val intent = Intent(context, RoutineInProgressActivity::class.java).apply {
+            putExtra("routine", routineAsJson)
+        }
+        context.startActivity(intent)
+    }
+
+
+    fun editRoutine(routine: RoutineContent.RoutineItem, context: Context) {
+        val routineAsJson = Json.encodeToString(routine)
+        val intent = Intent(context, EditRoutineActivity::class.java).apply {
+            putExtra("routine", routineAsJson)
+        }
+        context.startActivity(intent)
     }
 
     private fun confirmDelete(context: Context, routine: RoutineContent.RoutineItem) {

@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditRoutineActivity">
+    android:layout_gravity="center"
+    tools:context=".RoutineInProgressActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -28,28 +29,51 @@
             style="@style/ButtonNoInsets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:background="#00000000"
             android:padding="0dp"
-            android:text="Cancel"
+            android:text="Discard"
             android:textColor="@color/common_blue"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/routineInProgressName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Edit routine"
-            android:textAlignment="center"
-            android:textColor="@color/offwhite"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center_vertical"
+            android:layout_weight="10"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:id="@+id/routineInProgressName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pull"
+                android:textAlignment="center"
+                android:textColor="@color/offwhite"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/workoutProgressTimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="06:03"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/saveWorkoutButton"
             style="@style/ButtonNoInsets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:background="@drawable/roundstyle"
             android:text="Save"
             android:textColor="@color/offwhite"
@@ -60,15 +84,15 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRoutineName">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,23 +124,4 @@
                 app:backgroundTint="#0088DD" />
         </LinearLayout>
     </ScrollView>
-
-    <EditText
-        android:id="@+id/editRoutineName"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Routine Name"
-        android:textAlignment="textStart"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

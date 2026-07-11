@@ -13,12 +13,11 @@
         android:id="@+id/setList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/addSetButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:listitem="@layout/set_item" />
 
     <TextView
@@ -26,66 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bicep curl"
+        android:textColor="@color/offwhite"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/setList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exerciseName">
-
-        <TextView
-            android:id="@+id/setNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="2"
-            android:text="Set"
-            android:textAlignment="textStart"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/weightKg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/weightKg"
-            style="@style/Widget.Material3.TextInputEditText.FilledBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:padding="0dp"
-            android:text="Weight"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/reps"
-            app:layout_constraintStart_toEndOf="@+id/setNumber"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/reps"
-            style="@style/Widget.Material3.TextInputEditText.FilledBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="4"
-            android:inputType="numberDecimal"
-            android:padding="0dp"
-            android:text="Reps"
-            android:textAlignment="textEnd"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/weightKg"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/addSetButton"
@@ -104,5 +48,71 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/MenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:insetLeft="8dp"
+        android:insetTop="8dp"
+        android:insetRight="8dp"
+        android:insetBottom="8dp"
+        app:icon="@drawable/cross_small_svgrepo_com"
+        app:iconPadding="0dp"
+        app:iconSize="12dp"
+        app:iconTint="#E53935"
+        app:layout_constraintBottom_toBottomOf="@+id/exerciseName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/exerciseName" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/setList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseName">
+
+        <TextView
+            android:id="@+id/setNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="2"
+            android:text="Set"
+            android:textAlignment="center"
+            android:textColor="@color/offwhite"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/weightKg"
+            style="@style/Widget.Material3.TextInputEditText.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="numberDecimal"
+            android:padding="0dp"
+            android:text="Weight"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/reps"
+            style="@style/Widget.Material3.TextInputEditText.FilledBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="4"
+            android:inputType="numberDecimal"
+            android:padding="0dp"
+            android:text="Reps"
+            android:textAlignment="center" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
