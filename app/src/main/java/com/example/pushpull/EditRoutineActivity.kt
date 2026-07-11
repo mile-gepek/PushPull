@@ -23,6 +23,9 @@ class EditRoutineActivity: AppCompatActivity() {
         setContentView(this.binding.root)
 
 
+//        this.binding.EditRoutineName.(routine.name)
+
+
         val routineAsJson = intent.getStringExtra("routine")!!
         this.routine = Json.decodeFromString<RoutineContent.RoutineItem>(routineAsJson)
 

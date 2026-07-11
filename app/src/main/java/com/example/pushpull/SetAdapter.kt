@@ -22,11 +22,10 @@ class SetAdapter(val exerciseSets: MutableList<ExerciseSet>): RecyclerView.Adapt
         holder: SetViewHolder,
         position: Int
     ) {
-        for (set in this.exerciseSets.withIndex()) {
-            holder.binding.setNumber.text = "${set.index + 1}"
-            holder.binding.weightKg.setText(set.value.weightKg.toString())
-            holder.binding.reps.setText(set.value.reps.toString())
-        }
+        val set = this.exerciseSets[position]
+        holder.binding.setNumber.text = position.toString()
+        holder.binding.weightKg.setText(set.weightKg.toString())
+        holder.binding.reps.setText(set.reps.toString())
     }
 
     override fun getItemCount(): Int = exerciseSets.size

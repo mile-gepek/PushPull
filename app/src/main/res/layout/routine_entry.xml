@@ -43,7 +43,7 @@
             android:text="Start routine"
             android:textColor="@color/offwhite"
             android:textSize="20sp"
-            app:backgroundTint="#0088DD"
+            app:backgroundTint="@color/common_blue"
             app:iconSize="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package com.example.pushpull
 
+import android.annotation.SuppressLint
 import kotlinx.serialization.Serializable
 
 object RoutineContent {
@@ -11,6 +12,13 @@ object RoutineContent {
         bench.exerciseSets.add(ExerciseSet(60.0, 9.0))
         bench.exerciseSets.add(ExerciseSet(60.0, 8.5))
         pushRoutine.exercises.add(bench)
+
+        val incline_bench = Exercise("Incline bench press", mutableListOf())
+        incline_bench.exerciseSets.add(ExerciseSet(60.0, 10.0))
+        incline_bench.exerciseSets.add(ExerciseSet(60.0, 9.0))
+        incline_bench.exerciseSets.add(ExerciseSet(60.0, 8.5))
+
+        pushRoutine.exercises.add(incline_bench)
 
         val pushdown = Exercise("Tricep pushdown", mutableListOf())
         pushdown.exerciseSets.add(ExerciseSet(30.0, 9.0))
@@ -35,6 +43,7 @@ object RoutineContent {
         return mutableListOf(pushRoutine, pullRoutine)
     }
 
+    @SuppressLint("UnsafeOptInUsageError")
     @Serializable
     data class RoutineItem(var name: String, var exercises: MutableList<Exercise> = mutableListOf())
 }

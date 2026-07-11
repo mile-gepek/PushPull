@@ -44,11 +44,11 @@
 
         <TextView
             android:id="@+id/setNumber"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="2"
             android:text="Set"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/weightKg"
@@ -58,7 +58,7 @@
         <EditText
             android:id="@+id/weightKg"
             style="@style/Widget.Material3.TextInputEditText.FilledBox"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:padding="0dp"
@@ -72,13 +72,13 @@
         <EditText
             android:id="@+id/reps"
             style="@style/Widget.Material3.TextInputEditText.FilledBox"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="4"
             android:inputType="numberDecimal"
             android:padding="0dp"
             android:text="Reps"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/weightKg"
