@@ -83,8 +83,7 @@ class RoutineInProgressActivity : AppCompatActivity() {
         MaterialAlertDialogBuilder(context)
             .setTitle("Discard workout?")
             .setPositiveButton("Discard") { _, _ ->
-                println("Discarding workout")
-                // cancel workout
+                finish()
             }
             .setNegativeButton("Resume", null)
             .show()
