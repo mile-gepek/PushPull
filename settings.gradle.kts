@@ -1,24 +1,24 @@
 pluginManagement {
-    repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
+    this.repositories {
+        this.google {
+            this.content {
+                this.includeGroupByRegex("com\\.android.*")
+                this.includeGroupByRegex("com\\.google.*")
+                this.includeGroupByRegex("androidx.*")
             }
         }
-        mavenCentral()
-        gradlePluginPortal()
+        this.mavenCentral()
+        this.gradlePluginPortal()
     }
 }
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+    this.id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
+    this.repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    this.repositories {
+        this.google()
+        this.mavenCentral()
     }
 }
 

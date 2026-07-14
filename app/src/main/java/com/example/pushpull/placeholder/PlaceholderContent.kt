@@ -25,18 +25,18 @@ object PlaceholderContent {
 
     init {
         // Add some sample items.
-        for (i in 1..COUNT) {
-            addItem(createPlaceholderItem(i))
+        for (i in 1..this.COUNT) {
+            this.addItem(this.createPlaceholderItem(i))
         }
     }
 
     private fun addItem(item: PlaceholderItem) {
-        ITEMS.add(item)
-        ITEM_MAP[item.id] = item
+        this.ITEMS.add(item)
+        this.ITEM_MAP[item.id] = item
     }
 
     private fun createPlaceholderItem(position: Int): PlaceholderItem {
-        return PlaceholderItem(position.toString(), "Item " + position, makeDetails(position))
+        return PlaceholderItem(position.toString(), "Item " + position, this.makeDetails(position))
     }
 
     private fun makeDetails(position: Int): String {
@@ -52,6 +52,6 @@ object PlaceholderContent {
      * A placeholder item representing a piece of content.
      */
     data class PlaceholderItem(val id: String, val content: String, val details: String) {
-        override fun toString(): String = content
+        override fun toString(): String = this.content
     }
 }

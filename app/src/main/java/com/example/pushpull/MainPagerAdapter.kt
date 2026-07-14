@@ -10,6 +10,6 @@ class MainPagerAdapter(fa: FragmentActivity): FragmentStateAdapter(fa) {
         WorkoutHistoryFragment(),
     )
 
-    override fun getItemCount() = fragments.size
-    override fun createFragment(position: Int) = fragments[position]
+    override fun getItemCount() = this.fragments.size
+    override fun createFragment(position: Int) = this.fragments[position]
 }

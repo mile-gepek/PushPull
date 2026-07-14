@@ -40,7 +40,8 @@ object RoutineContent {
         pulldown.exerciseSets.add(ExerciseSet(60.0, 10.0))
         pullRoutine.exercises.add(pulldown)
 
-        return mutableListOf(pushRoutine, pullRoutine)
+
+        return mutableListOf(pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, )
     }
 
     @SuppressLint("UnsafeOptInUsageError")

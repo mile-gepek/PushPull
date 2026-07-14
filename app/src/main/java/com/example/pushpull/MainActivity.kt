@@ -16,12 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        enableEdgeToEdge()
+        this.enableEdgeToEdge()
 
-        this.binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(this.binding.root)
+        this.binding = ActivityMainBinding.inflate(this.layoutInflater)
+        this.setContentView(this.binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(this.binding.main) { view, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

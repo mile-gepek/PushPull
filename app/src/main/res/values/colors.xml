@@ -5,4 +5,5 @@
     <color name="offwhite">#F2F0EF</color>
     <color name="card_dark_blue">#2B2B3B</color>
     <color name="common_blue">#009dff</color>
+    <color name="cancel_red">#f2644c</color>
 </resources>

@@ -26,11 +26,11 @@ class RoutineListAdapter(
     }
 
     override fun onBindViewHolder(holder: RoutineViewHolder, position: Int) {
-        val routine = routines[position]
+        val routine = this.routines[position]
         holder.binding.routineName.text = routine.name
 
         holder.binding.layout.setOnClickListener { anchorView ->
-            editRoutine(routine, anchorView.context)
+            this.editRoutine(routine, anchorView.context)
         }
 
         holder.binding.menuButton.setOnClickListener { anchorView ->
@@ -39,11 +39,11 @@ class RoutineListAdapter(
             menu.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.routine_edit -> {
-                        editRoutine(routine, anchorView.context)
+                        this.editRoutine(routine, anchorView.context)
                         true
                     }
                     R.id.routine_delete -> {
-                        confirmDelete(anchorView.context,routine)
+                        this.confirmDelete(anchorView.context,routine)
                         true
                     }
                     else -> false
@@ -53,7 +53,7 @@ class RoutineListAdapter(
         }
 
         holder.binding.startRoutineButton.setOnClickListener { anchorView ->
-            startRoutine(routine, anchorView.context)
+            this.startRoutine(routine, anchorView.context)
         }
     }
 
@@ -61,7 +61,7 @@ class RoutineListAdapter(
     fun startRoutine(routine: RoutineContent.RoutineItem, context: Context) {
         val routineAsJson = Json.encodeToString(routine)
         val intent = Intent(context, RoutineInProgressActivity::class.java).apply {
-            putExtra("routine", routineAsJson)
+            this.putExtra("routine", routineAsJson)
         }
         context.startActivity(intent)
     }
@@ -70,7 +70,7 @@ class RoutineListAdapter(
     fun editRoutine(routine: RoutineContent.RoutineItem, context: Context) {
         val routineAsJson = Json.encodeToString(routine)
         val intent = Intent(context, EditRoutineActivity::class.java).apply {
-            putExtra("routine", routineAsJson)
+            this.putExtra("routine", routineAsJson)
         }
         context.startActivity(intent)
     }
@@ -88,7 +88,7 @@ class RoutineListAdapter(
             .show()
     }
 
-    override fun getItemCount(): Int = routines.size
+    override fun getItemCount(): Int = this.routines.size
 
     inner class RoutineViewHolder(val binding: RoutineEntryBinding) : RecyclerView.ViewHolder(binding.root)
 }

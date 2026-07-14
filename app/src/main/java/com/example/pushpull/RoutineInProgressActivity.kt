@@ -2,6 +2,7 @@ package com.example.pushpull
 
 import android.content.Context
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,6 +19,7 @@ import java.util.Timer
 import java.util.TimerTask
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
@@ -32,18 +34,18 @@ class RoutineInProgressActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        this.enableEdgeToEdge()
 
-        binding = ActivityRoutineInProgressBinding.inflate(layoutInflater)
-        setContentView(this.binding.root)
+        this.binding = ActivityRoutineInProgressBinding.inflate(this.layoutInflater)
+        this.setContentView(this.binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(this.findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val routineAsJson = intent.getStringExtra("routine")!!
+        val routineAsJson = this.intent.getStringExtra("routine")!!
         this.routine = Json.decodeFromString<RoutineContent.RoutineItem>(routineAsJson)
 
         val adapter = RoutineEditExercisesAdapter(this.routine.exercises)
@@ -51,18 +53,22 @@ class RoutineInProgressActivity : AppCompatActivity() {
         this.binding.routineEditExerciseList.layoutManager = LinearLayoutManager(this)
 
         this.binding.cancelWorkoutButton.setOnClickListener { anchorView ->
-            confirmCancelWorkout(anchorView.context)
+            this.confirmCancelWorkout(anchorView.context)
         }
 
-        startTimer()
+        this.onBackPressedDispatcher.addCallback(this) {
+            this@RoutineInProgressActivity.confirmCancelWorkout(this@RoutineInProgressActivity)
+        }
+
+        this.startTimer()
     }
 
     fun startTimer() {
         fun updateUI() {
             var timerText: String = ""
-            val hours = duration.inWholeHours
-            val minutes = duration.inWholeMinutes
-            val seconds = duration.inWholeSeconds
+            val hours = this.duration.inWholeHours
+            val minutes = this.duration.inWholeMinutes
+            val seconds = this.duration.inWholeSeconds
             if (hours > 0) {
                 timerText = "%02d:".format(hours)
             }
@@ -70,11 +76,11 @@ class RoutineInProgressActivity : AppCompatActivity() {
             this.binding.workoutProgressTimer.text = timerText
         }
 
-        timerJob = lifecycleScope.launch {
+        this.timerJob = this.lifecycleScope.launch {
             while (true) {
                 updateUI()
                 delay(1000.milliseconds)
-                duration += 1.toDuration(DurationUnit.SECONDS)
+                this@RoutineInProgressActivity.duration += 1.seconds
             }
         }
     }
@@ -83,7 +89,7 @@ class RoutineInProgressActivity : AppCompatActivity() {
         MaterialAlertDialogBuilder(context)
             .setTitle("Discard workout?")
             .setPositiveButton("Discard") { _, _ ->
-                finish()
+                this.finish()
             }
             .setNegativeButton("Resume", null)
             .show()

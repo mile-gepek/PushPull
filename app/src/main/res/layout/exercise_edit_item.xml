@@ -62,7 +62,7 @@
         app:icon="@drawable/cross_small_svgrepo_com"
         app:iconPadding="0dp"
         app:iconSize="12dp"
-        app:iconTint="#E53935"
+        app:iconTint="@color/cancel_red"
         app:layout_constraintBottom_toBottomOf="@+id/exerciseName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/exerciseName" />

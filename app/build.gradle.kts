@@ -1,57 +1,57 @@
 plugins {
-    alias(libs.plugins.android.application)
-    kotlin("plugin.serialization")
+    this.alias(this.libs.plugins.android.application)
+    this.kotlin("plugin.serialization")
 }
 
 android {
-    namespace = "com.example.pushpull"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
+    this.namespace = "com.example.pushpull"
+    this.compileSdk {
+        this.version = this.release(36) {
+            this.minorApiLevel = 1
         }
     }
 
-    defaultConfig {
-        applicationId = "com.example.pushpull"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+    this.defaultConfig {
+        this.applicationId = "com.example.pushpull"
+        this.minSdk = 26
+        this.targetSdk = 36
+        this.versionCode = 1
+        this.versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        this.testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            optimization {
-                enable = false
+    this.buildTypes {
+        this.release {
+            this.optimization {
+                this.enable = false
             }
         }
     }
 
-    buildFeatures {
-        viewBinding = true
+    this.buildFeatures {
+        this.viewBinding = true
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+    this.compileOptions {
+        this.sourceCompatibility = JavaVersion.VERSION_11
+        this.targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
 dependencies {
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.recyclerview)
-    implementation(libs.androidx.viewpager2)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
+    this.implementation(libs.androidx.activity.ktx)
+    this.implementation(libs.androidx.appcompat)
+    this.implementation(libs.androidx.constraintlayout)
+    this.implementation(libs.androidx.core.ktx)
+    this.implementation(libs.androidx.legacy.support.v4)
+    this.implementation(libs.androidx.recyclerview)
+    this.implementation(libs.androidx.viewpager2)
+    this.implementation(libs.material)
+    this.testImplementation(libs.junit)
+    this.androidTestImplementation(libs.androidx.espresso.core)
+    this.androidTestImplementation(libs.androidx.junit)
 
-    implementation(libs.kotlinx.serialization.json)
+    this.implementation(libs.kotlinx.serialization.json)
 }
 

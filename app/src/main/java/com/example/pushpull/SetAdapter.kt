@@ -28,7 +28,7 @@ class SetAdapter(val exerciseSets: MutableList<ExerciseSet>): RecyclerView.Adapt
         holder.binding.reps.setText(set.reps.toString())
     }
 
-    override fun getItemCount(): Int = exerciseSets.size
+    override fun getItemCount(): Int = this.exerciseSets.size
 
 
     inner class SetViewHolder(val binding: SetItemBinding): RecyclerView.ViewHolder(binding.root)
