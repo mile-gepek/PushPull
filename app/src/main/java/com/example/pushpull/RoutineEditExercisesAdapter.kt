@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pushpull.databinding.ExerciseEditItemBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class RoutineEditExercisesAdapter(private val exercises: MutableList<Exercise>): RecyclerView.Adapter<RoutineEditExercisesAdapter.EditExercisesView>() {
-
-
+class RoutineEditExercisesAdapter(private val exercises: MutableList<Exercise>, val onChanged: (() -> Unit)? = null): RecyclerView.Adapter<RoutineEditExercisesAdapter.EditExercisesView>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditExercisesView {
         val binding = ExerciseEditItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -29,8 +28,37 @@ class RoutineEditExercisesAdapter(private val exercises: MutableList<Exercise>):
 
         holder.binding.exerciseName.text = exercise.name
 
-        holder.binding.setList.adapter = SetAdapter(exercise.exerciseSets)
+        val adapter = SetAdapter(exercise.exerciseSets, this.onChanged,)
+        holder.binding.setList.adapter = adapter
+
+        holder.binding.addSetButton.setOnClickListener {
+            val lastSet = if (exercise.exerciseSets.isEmpty()) {
+                ExerciseSet(0.0, 0.0)
+            } else {
+                exercise.exerciseSets.last()
+            }
+            exercise.exerciseSets.add(lastSet)
+            this.onChanged?.invoke()
+            adapter.notifyItemInserted(exercise.exerciseSets.size)
+        }
+
+        holder.binding.addSetButton.setOnContextClickListener { anchorView ->
+            true
+        }
+
+        holder.binding.removeExerciseButton.setOnClickListener { anchorView ->
+            MaterialAlertDialogBuilder(anchorView.context)
+                .setTitle("Remove exercise?")
+                .setMessage("Are you sure you want to remove this exercise?")
+                .setPositiveButton("Remove") { _, _ ->
+                    this.exercises.removeAt(position)
+                    this.notifyItemRemoved(position)
+                    this.onChanged?.invoke()
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
+        }
     }
 
-    inner class EditExercisesView(val binding: ExerciseEditItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class EditExercisesView(val binding: ExerciseEditItemBinding) : RecyclerView.ViewHolder(binding.root)
 }

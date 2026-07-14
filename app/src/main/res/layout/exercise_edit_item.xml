@@ -50,16 +50,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/removeExerciseButton"
         style="@style/MenuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginEnd="6dp"
-        android:insetLeft="8dp"
-        android:insetTop="8dp"
-        android:insetRight="8dp"
-        android:insetBottom="8dp"
+        android:gravity="right"
+        android:textAlignment="center"
         app:icon="@drawable/cross_small_svgrepo_com"
+        app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconSize="12dp"
         app:iconTint="@color/cancel_red"

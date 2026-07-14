@@ -53,5 +53,7 @@ dependencies {
     this.androidTestImplementation(libs.androidx.junit)
 
     this.implementation(libs.kotlinx.serialization.json)
+    this.implementation(libs.kotlinx.datetime)
+    this.implementation(libs.kotlinx.serialization.json.v171)
 }
 

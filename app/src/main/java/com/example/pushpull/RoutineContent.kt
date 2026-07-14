@@ -17,7 +17,6 @@ object RoutineContent {
         incline_bench.exerciseSets.add(ExerciseSet(60.0, 10.0))
         incline_bench.exerciseSets.add(ExerciseSet(60.0, 9.0))
         incline_bench.exerciseSets.add(ExerciseSet(60.0, 8.5))
-
         pushRoutine.exercises.add(incline_bench)
 
         val pushdown = Exercise("Tricep pushdown", mutableListOf())

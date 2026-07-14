@@ -31,6 +31,8 @@ class RoutineInProgressActivity : AppCompatActivity() {
     var duration: Duration = Duration.ZERO
     var timerJob: Job? = null
 
+    var routineChanged = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +50,9 @@ class RoutineInProgressActivity : AppCompatActivity() {
         val routineAsJson = this.intent.getStringExtra("routine")!!
         this.routine = Json.decodeFromString<RoutineContent.RoutineItem>(routineAsJson)
 
-        val adapter = RoutineEditExercisesAdapter(this.routine.exercises)
+        val adapter = RoutineEditExercisesAdapter(this.routine.exercises) {
+            this.routineChanged = true
+        }
         this.binding.routineEditExerciseList.adapter = adapter
         this.binding.routineEditExerciseList.layoutManager = LinearLayoutManager(this)
 
