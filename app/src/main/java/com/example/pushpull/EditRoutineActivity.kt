@@ -19,7 +19,6 @@ class EditRoutineActivity: AppCompatActivity() {
     lateinit var binding: ActivityEditRoutinesBinding
 
     lateinit var routine: RoutineContent.RoutineItem
-    var adapter: RoutineEditExercisesAdapter? = null
 
     var changesMade = false
 
@@ -34,7 +33,7 @@ class EditRoutineActivity: AppCompatActivity() {
             if (exerciseIndex >= 0) {
                 val exercise = RoutineContent.exercises!![exerciseIndex]
                 this.routine.exercises.add(exercise)
-                this.adapter?.notifyItemInserted(this.routine.exercises.size)
+                this.binding.routineEditExerciseList.adapter?.notifyItemInserted(this.routine.exercises.size)
                 this.onChange()
             }
         }
@@ -48,8 +47,12 @@ class EditRoutineActivity: AppCompatActivity() {
         this.binding = ActivityEditRoutinesBinding.inflate(this.layoutInflater)
         this.setContentView(this.binding.root)
 
-        val routineAsJson = this.intent.getStringExtra("routine")!!
-        this.routine = Json.decodeFromString<RoutineContent.RoutineItem>(routineAsJson)
+        val routineIndex = this.intent.getIntExtra("routine_index", -1)
+        if (routineIndex >= 0) {
+            this.routine = RoutineContent.routines!![routineIndex]
+        } else {
+            this.routine = RoutineContent.RoutineItem("New routine")
+        }
 
 
         this.binding.editRoutineName.setText(this.routine.name)
@@ -66,6 +69,9 @@ class EditRoutineActivity: AppCompatActivity() {
             this.addExerciseRegister.launch(intent)
         }
 
+        this.binding.saveWorkoutButton.setOnClickListener {
+
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(this.findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -77,10 +83,10 @@ class EditRoutineActivity: AppCompatActivity() {
             this@EditRoutineActivity.confirmCancel()
         }
 
-        this.adapter = RoutineEditExercisesAdapter(this.routine.exercises) {
+        val adapter = RoutineEditExercisesAdapter(this.routine.exercises) {
             this.onChange()
         }
-        this.binding.routineEditExerciseList.adapter = this.adapter!!
+        this.binding.routineEditExerciseList.adapter = adapter
         this.binding.routineEditExerciseList.layoutManager = LinearLayoutManager(this)
     }
 

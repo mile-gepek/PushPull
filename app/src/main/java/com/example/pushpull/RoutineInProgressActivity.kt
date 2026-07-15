@@ -43,8 +43,10 @@ class RoutineInProgressActivity : AppCompatActivity() {
             insets
         }
 
-        val routineAsJson = this.intent.getStringExtra("routine")!!
-        this.routine = Json.decodeFromString<RoutineContent.RoutineItem>(routineAsJson)
+        val routineIndex = this.intent.getIntExtra("routine_index", -1)
+        this.routine = RoutineContent.routines!![routineIndex]
+
+        this.binding.routineInProgressName.text = this.routine.name
 
         val adapter = RoutineEditExercisesAdapter(this.routine.exercises) {
             this.routineChanged = true

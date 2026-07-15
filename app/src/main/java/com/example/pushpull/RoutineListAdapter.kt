@@ -30,7 +30,7 @@ class RoutineListAdapter(
         holder.binding.routineName.text = routine.name
 
         holder.binding.layout.setOnClickListener { anchorView ->
-            this.editRoutine(routine, anchorView.context)
+            this.editRoutine(position, anchorView.context)
         }
 
         holder.binding.menuButton.setOnClickListener { anchorView ->
@@ -39,11 +39,11 @@ class RoutineListAdapter(
             menu.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.routine_edit -> {
-                        this.editRoutine(routine, anchorView.context)
+                        this.editRoutine(position, anchorView.context)
                         true
                     }
                     R.id.routine_delete -> {
-                        this.confirmDelete(anchorView.context,routine)
+                        this.confirmDelete(anchorView.context, position)
                         true
                     }
                     else -> false
@@ -53,29 +53,28 @@ class RoutineListAdapter(
         }
 
         holder.binding.startRoutineButton.setOnClickListener { anchorView ->
-            this.startRoutine(routine, anchorView.context)
+            this.startRoutine(position, anchorView.context)
         }
     }
 
 
-    fun startRoutine(routine: RoutineContent.RoutineItem, context: Context) {
-        val routineAsJson = Json.encodeToString(routine)
+    fun startRoutine(routineIndex: Int, context: Context) {
         val intent = Intent(context, RoutineInProgressActivity::class.java).apply {
-            this.putExtra("routine", routineAsJson)
+            this.putExtra("routine_index", routineIndex)
         }
         context.startActivity(intent)
     }
 
 
-    fun editRoutine(routine: RoutineContent.RoutineItem, context: Context) {
-        val routineAsJson = Json.encodeToString(routine)
+    fun editRoutine(routineIndex: Int, context: Context) {
         val intent = Intent(context, EditRoutineActivity::class.java).apply {
-            this.putExtra("routine", routineAsJson)
+            this.putExtra("routine_index", routineIndex)
         }
         context.startActivity(intent)
     }
 
-    private fun confirmDelete(context: Context, routine: RoutineContent.RoutineItem) {
+    private fun confirmDelete(context: Context, routineIndex: Int) {
+        val routine = RoutineContent.routines!![routineIndex]
         MaterialAlertDialogBuilder(context)
             .setTitle("Delete routine?")
             .setMessage("This will permanently delete the workout routine \"${routine.name}\". This can't be undone.")
