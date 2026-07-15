@@ -33,6 +33,10 @@
             android:name=".ViewWorkoutEntry"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ExerciseSelect"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

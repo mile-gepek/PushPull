@@ -1,0 +1,414 @@
+[
+  {
+    "name": "Bench press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Incline bench press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Decline bench press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Dumbbell bench press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Incline dumbbell press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Chest fly",
+    "exerciseSets": []
+  },
+  {
+    "name": "Cable crossover",
+    "exerciseSets": []
+  },
+  {
+    "name": "Pec deck",
+    "exerciseSets": []
+  },
+  {
+    "name": "Push-up",
+    "exerciseSets": []
+  },
+  {
+    "name": "Dips",
+    "exerciseSets": []
+  },
+  {
+    "name": "Overhead press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Dumbbell shoulder press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Arnold press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Lateral raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Front raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Rear delt fly",
+    "exerciseSets": []
+  },
+  {
+    "name": "Cable lateral raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Upright row",
+    "exerciseSets": []
+  },
+  {
+    "name": "Shrugs",
+    "exerciseSets": []
+  },
+  {
+    "name": "Face pull",
+    "exerciseSets": []
+  },
+  {
+    "name": "Pull-up",
+    "exerciseSets": []
+  },
+  {
+    "name": "Chin-up",
+    "exerciseSets": []
+  },
+  {
+    "name": "Lat pulldown",
+    "exerciseSets": []
+  },
+  {
+    "name": "Seated cable row",
+    "exerciseSets": []
+  },
+  {
+    "name": "Bent-over row",
+    "exerciseSets": []
+  },
+  {
+    "name": "Dumbbell row",
+    "exerciseSets": []
+  },
+  {
+    "name": "T-bar row",
+    "exerciseSets": []
+  },
+  {
+    "name": "Barbell row",
+    "exerciseSets": []
+  },
+  {
+    "name": "Deadlift",
+    "exerciseSets": []
+  },
+  {
+    "name": "Romanian deadlift",
+    "exerciseSets": []
+  },
+  {
+    "name": "Sumo deadlift",
+    "exerciseSets": []
+  },
+  {
+    "name": "Rack pull",
+    "exerciseSets": []
+  },
+  {
+    "name": "Squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Front squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Goblet squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Hack squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Leg press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Bulgarian split squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Walking lunge",
+    "exerciseSets": []
+  },
+  {
+    "name": "Reverse lunge",
+    "exerciseSets": []
+  },
+  {
+    "name": "Step-up",
+    "exerciseSets": []
+  },
+  {
+    "name": "Leg extension",
+    "exerciseSets": []
+  },
+  {
+    "name": "Leg curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Stiff-leg deadlift",
+    "exerciseSets": []
+  },
+  {
+    "name": "Hip thrust",
+    "exerciseSets": []
+  },
+  {
+    "name": "Glute bridge",
+    "exerciseSets": []
+  },
+  {
+    "name": "Calf raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Seated calf raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Standing calf raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Barbell curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Bicep curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Hammer curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Preacher curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Concentration curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Cable curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Incline dumbbell curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Zottman curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Tricep pushdown",
+    "exerciseSets": []
+  },
+  {
+    "name": "Overhead tricep extension",
+    "exerciseSets": []
+  },
+  {
+    "name": "Skull crusher",
+    "exerciseSets": []
+  },
+  {
+    "name": "Close-grip bench press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Tricep kickback",
+    "exerciseSets": []
+  },
+  {
+    "name": "Diamond push-up",
+    "exerciseSets": []
+  },
+  {
+    "name": "Plank",
+    "exerciseSets": []
+  },
+  {
+    "name": "Side plank",
+    "exerciseSets": []
+  },
+  {
+    "name": "Crunch",
+    "exerciseSets": []
+  },
+  {
+    "name": "Bicycle crunch",
+    "exerciseSets": []
+  },
+  {
+    "name": "Sit-up",
+    "exerciseSets": []
+  },
+  {
+    "name": "Russian twist",
+    "exerciseSets": []
+  },
+  {
+    "name": "Leg raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Hanging leg raise",
+    "exerciseSets": []
+  },
+  {
+    "name": "Mountain climber",
+    "exerciseSets": []
+  },
+  {
+    "name": "Ab wheel rollout",
+    "exerciseSets": []
+  },
+  {
+    "name": "Cable crunch",
+    "exerciseSets": []
+  },
+  {
+    "name": "Wood chopper",
+    "exerciseSets": []
+  },
+  {
+    "name": "Farmer's carry",
+    "exerciseSets": []
+  },
+  {
+    "name": "Kettlebell swing",
+    "exerciseSets": []
+  },
+  {
+    "name": "Turkish get-up",
+    "exerciseSets": []
+  },
+  {
+    "name": "Clean and jerk",
+    "exerciseSets": []
+  },
+  {
+    "name": "Snatch",
+    "exerciseSets": []
+  },
+  {
+    "name": "Power clean",
+    "exerciseSets": []
+  },
+  {
+    "name": "Box jump",
+    "exerciseSets": []
+  },
+  {
+    "name": "Burpee",
+    "exerciseSets": []
+  },
+  {
+    "name": "Jump squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Battle ropes",
+    "exerciseSets": []
+  },
+  {
+    "name": "Sled push",
+    "exerciseSets": []
+  },
+  {
+    "name": "Sled pull",
+    "exerciseSets": []
+  },
+  {
+    "name": "Rowing machine",
+    "exerciseSets": []
+  },
+  {
+    "name": "Assault bike",
+    "exerciseSets": []
+  },
+  {
+    "name": "Jump rope",
+    "exerciseSets": []
+  },
+  {
+    "name": "Wall sit",
+    "exerciseSets": []
+  },
+  {
+    "name": "Hip abduction",
+    "exerciseSets": []
+  },
+  {
+    "name": "Hip adduction",
+    "exerciseSets": []
+  },
+  {
+    "name": "Good morning",
+    "exerciseSets": []
+  },
+  {
+    "name": "Reverse fly",
+    "exerciseSets": []
+  },
+  {
+    "name": "Landmine press",
+    "exerciseSets": []
+  },
+  {
+    "name": "Cable pull-through",
+    "exerciseSets": []
+  },
+  {
+    "name": "Nordic curl",
+    "exerciseSets": []
+  },
+  {
+    "name": "Sissy squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Pistol squat",
+    "exerciseSets": []
+  },
+  {
+    "name": "Renegade row",
+    "exerciseSets": []
+  },
+  {
+    "name": "Man maker",
+    "exerciseSets": []
+  },
+  {
+    "name": "Devil's press",
+    "exerciseSets": []
+  }
+]

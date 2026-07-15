@@ -15,13 +15,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
-import java.util.Timer
-import java.util.TimerTask
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
-import kotlin.time.DurationUnit
-import kotlin.time.toDuration
 
 class RoutineInProgressActivity : AppCompatActivity() {
     lateinit var binding: ActivityRoutineInProgressBinding

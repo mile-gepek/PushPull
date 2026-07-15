@@ -12,7 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.serialization.json.Json
 
 class RoutineListAdapter(
-    private val routines: MutableList<RoutineContent.RoutineItem> = RoutineContent.getDefaultRoutines()
+    private val routines: MutableList<RoutineContent.RoutineItem> = RoutineContent.routines!!
 ) : RecyclerView.Adapter<RoutineListAdapter.RoutineViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutineViewHolder {

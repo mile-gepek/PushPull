@@ -1,0 +1,374 @@
+[
+  {
+    "name": "Push",
+    "exercises": [
+      {
+        "name": "Bench press",
+        "exerciseSets": [
+          {
+            "weightKg": 60,
+            "reps": 10
+          },
+          {
+            "weightKg": 65,
+            "reps": 8
+          },
+          {
+            "weightKg": 65,
+            "reps": 8
+          }
+        ]
+      },
+      {
+        "name": "Overhead press",
+        "exerciseSets": [
+          {
+            "weightKg": 30,
+            "reps": 10
+          },
+          {
+            "weightKg": 32.5,
+            "reps": 8
+          }
+        ]
+      },
+      {
+        "name": "Incline dumbbell press",
+        "exerciseSets": [
+          {
+            "weightKg": 22.5,
+            "reps": 10
+          },
+          {
+            "weightKg": 22.5,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Lateral raise",
+        "exerciseSets": [
+          {
+            "weightKg": 8,
+            "reps": 12
+          },
+          {
+            "weightKg": 8,
+            "reps": 12
+          }
+        ]
+      },
+      {
+        "name": "Tricep pushdown",
+        "exerciseSets": [
+          {
+            "weightKg": 20,
+            "reps": 12
+          },
+          {
+            "weightKg": 20,
+            "reps": 12
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Pull",
+    "exercises": [
+      {
+        "name": "Pull-up",
+        "exerciseSets": [
+          {
+            "weightKg": 0,
+            "reps": 8
+          },
+          {
+            "weightKg": 0,
+            "reps": 8
+          }
+        ]
+      },
+      {
+        "name": "Barbell row",
+        "exerciseSets": [
+          {
+            "weightKg": 50,
+            "reps": 10
+          },
+          {
+            "weightKg": 55,
+            "reps": 8
+          }
+        ]
+      },
+      {
+        "name": "Lat pulldown",
+        "exerciseSets": [
+          {
+            "weightKg": 45,
+            "reps": 10
+          },
+          {
+            "weightKg": 45,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Face pull",
+        "exerciseSets": [
+          {
+            "weightKg": 15,
+            "reps": 15
+          },
+          {
+            "weightKg": 15,
+            "reps": 15
+          }
+        ]
+      },
+      {
+        "name": "Bicep curl",
+        "exerciseSets": [
+          {
+            "weightKg": 12.5,
+            "reps": 10
+          },
+          {
+            "weightKg": 12.5,
+            "reps": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Legs",
+    "exercises": [
+      {
+        "name": "Squat",
+        "exerciseSets": [
+          {
+            "weightKg": 80,
+            "reps": 8
+          },
+          {
+            "weightKg": 85,
+            "reps": 6
+          }
+        ]
+      },
+      {
+        "name": "Romanian deadlift",
+        "exerciseSets": [
+          {
+            "weightKg": 70,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Leg press",
+        "exerciseSets": [
+          {
+            "weightKg": 120,
+            "reps": 10
+          },
+          {
+            "weightKg": 120,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Leg curl",
+        "exerciseSets": [
+          {
+            "weightKg": 35,
+            "reps": 12
+          },
+          {
+            "weightKg": 35,
+            "reps": 12
+          }
+        ]
+      },
+      {
+        "name": "Calf raise",
+        "exerciseSets": [
+          {
+            "weightKg": 40,
+            "reps": 15
+          },
+          {
+            "weightKg": 40,
+            "reps": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Upper Body",
+    "exercises": [
+      {
+        "name": "Dumbbell bench press",
+        "exerciseSets": [
+          {
+            "weightKg": 25,
+            "reps": 10
+          },
+          {
+            "weightKg": 25,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Seated cable row",
+        "exerciseSets": [
+          {
+            "weightKg": 45,
+            "reps": 10
+          },
+          {
+            "weightKg": 45,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Arnold press",
+        "exerciseSets": [
+          {
+            "weightKg": 14,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Hammer curl",
+        "exerciseSets": [
+          {
+            "weightKg": 12,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Skull crusher",
+        "exerciseSets": [
+          {
+            "weightKg": 20,
+            "reps": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lower Body",
+    "exercises": [
+      {
+        "name": "Deadlift",
+        "exerciseSets": [
+          {
+            "weightKg": 100,
+            "reps": 5
+          },
+          {
+            "weightKg": 100,
+            "reps": 5
+          }
+        ]
+      },
+      {
+        "name": "Bulgarian split squat",
+        "exerciseSets": [
+          {
+            "weightKg": 20,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Hip thrust",
+        "exerciseSets": [
+          {
+            "weightKg": 60,
+            "reps": 10
+          }
+        ]
+      },
+      {
+        "name": "Leg extension",
+        "exerciseSets": [
+          {
+            "weightKg": 35,
+            "reps": 12
+          }
+        ]
+      },
+      {
+        "name": "Standing calf raise",
+        "exerciseSets": [
+          {
+            "weightKg": 50,
+            "reps": 15
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Full Body",
+    "exercises": [
+      {
+        "name": "Kettlebell swing",
+        "exerciseSets": [
+          {
+            "weightKg": 16,
+            "reps": 15
+          }
+        ]
+      },
+      {
+        "name": "Burpee",
+        "exerciseSets": [
+          {
+            "weightKg": 0,
+            "reps": 15
+          }
+        ]
+      },
+      {
+        "name": "Goblet squat",
+        "exerciseSets": [
+          {
+            "weightKg": 18,
+            "reps": 12
+          }
+        ]
+      },
+      {
+        "name": "Push-up",
+        "exerciseSets": [
+          {
+            "weightKg": 0,
+            "reps": 15
+          }
+        ]
+      },
+      {
+        "name": "Plank",
+        "exerciseSets": [
+          {
+            "weightKg": 0,
+            "reps": 60
+          }
+        ]
+      }
+    ]
+  }
+]

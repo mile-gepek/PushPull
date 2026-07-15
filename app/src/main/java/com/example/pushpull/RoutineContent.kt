@@ -1,46 +1,90 @@
 package com.example.pushpull
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
+import androidx.core.content.edit
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.plus
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import kotlin.time.Clock
+import kotlin.time.Duration
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
+
+
+@SuppressLint("UnsafeOptInUsageError")
+@Serializable
+data class ExerciseSet(var weightKg: Double, var reps: Double)
+
+@SuppressLint("UnsafeOptInUsageError")
+@Serializable
+data class Exercise(var name: String, val exerciseSets: MutableList<ExerciseSet> = mutableListOf())
+
+@SuppressLint("UnsafeOptInUsageError")
+@Serializable
+data class WorkoutHistoryEntry(
+    val routine: RoutineContent.RoutineItem,
+    val datetime: LocalDateTime,
+    val duration: Duration
+) {
+    companion object {
+        fun getPlaceholders(): MutableList<WorkoutHistoryEntry> {
+            val list = mutableListOf<WorkoutHistoryEntry>()
+
+            val routines = RoutineContent.routines!!
+            val timezone = TimeZone.currentSystemDefault()
+            val now = Clock.System.now().toLocalDateTime(timezone)
+            for ((i, routine) in routines.withIndex()) {
+                val routine = routine
+                val startDateTime = now.toInstant(timezone)
+                    .plus(i, DateTimeUnit.DAY, timezone)
+                    .toLocalDateTime(timezone)
+                val duration =
+                    (((i.toDouble() + 15) * 100.0 % 103.0) / 103.0 + 1).toDuration(DurationUnit.HOURS)
+                val entry = WorkoutHistoryEntry(routine, startDateTime, duration)
+                list.add(entry)
+            }
+
+            return list
+        }
+    }
+}
+
 
 object RoutineContent {
-    fun getDefaultRoutines(): MutableList<RoutineItem> {
-        val pushRoutine = RoutineItem("Push")
+    var exercises: MutableList<Exercise>? = null
+    var routines: MutableList<RoutineItem>? = null
 
-        val bench = Exercise("Bench press", mutableListOf())
-        bench.exerciseSets.add(ExerciseSet(60.0, 10.0))
-        bench.exerciseSets.add(ExerciseSet(60.0, 9.0))
-        bench.exerciseSets.add(ExerciseSet(60.0, 8.5))
-        pushRoutine.exercises.add(bench)
+    fun  loadTextFromAssetFile(context: Context, filename: String): String {
+        return context.assets.open(filename).bufferedReader().use { it.readText() }
+    }
 
-        val incline_bench = Exercise("Incline bench press", mutableListOf())
-        incline_bench.exerciseSets.add(ExerciseSet(60.0, 10.0))
-        incline_bench.exerciseSets.add(ExerciseSet(60.0, 9.0))
-        incline_bench.exerciseSets.add(ExerciseSet(60.0, 8.5))
-        pushRoutine.exercises.add(incline_bench)
+    fun loadDefaultExercises(context: Context, preferences: SharedPreferences) {
+        val exercisesAsJson = this.loadTextFromAssetFile(context, "default_exercises.json")
+        this.exercises = Json.decodeFromString<MutableList<Exercise>>(exercisesAsJson)
+        preferences.edit{ this.putString("exercises", exercisesAsJson) }
+    }
 
-        val pushdown = Exercise("Tricep pushdown", mutableListOf())
-        pushdown.exerciseSets.add(ExerciseSet(30.0, 9.0))
-        pushdown.exerciseSets.add(ExerciseSet(30.0, 8.0))
-        pushdown.exerciseSets.add(ExerciseSet(30.0, 6.5))
-        pushRoutine.exercises.add(pushdown)
+    fun loadDefaultRoutines(context: Context, preferences: SharedPreferences) {
+        val routinesAsJson = this.loadTextFromAssetFile(context, "default_routines.json")
+        this.routines = Json.decodeFromString<MutableList<RoutineItem>>(routinesAsJson)
+        preferences.edit{ this.putString("routines", routinesAsJson) }
+    }
 
-        val pullRoutine = RoutineItem("Pull")
+    fun loadExercises(preferences: SharedPreferences) {
+        val exercisesAsJson = preferences.getString("exercises", "")!!
+        this.exercises = Json.decodeFromString<MutableList<Exercise>>(exercisesAsJson)
+    }
 
-        val curl = Exercise("Bicep curl", mutableListOf())
-        curl.exerciseSets.add(ExerciseSet(12.0, 10.0))
-        curl.exerciseSets.add(ExerciseSet(12.0, 9.0))
-        curl.exerciseSets.add(ExerciseSet(12.0, 8.5))
-        pullRoutine.exercises.add(curl)
-
-        val pulldown = Exercise("Lat pulldown", mutableListOf())
-        pulldown.exerciseSets.add(ExerciseSet(60.0, 11.0))
-        pulldown.exerciseSets.add(ExerciseSet(60.0, 10.5))
-        pulldown.exerciseSets.add(ExerciseSet(60.0, 10.0))
-        pullRoutine.exercises.add(pulldown)
-
-
-        return mutableListOf(pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, pushRoutine, pullRoutine, )
+    fun loadRoutines(preferences: SharedPreferences) {
+        val routinesAsJson = preferences.getString("routines", "")!!
+        this.routines = Json.decodeFromString<MutableList<RoutineItem>>(routinesAsJson)
     }
 
     @SuppressLint("UnsafeOptInUsageError")
