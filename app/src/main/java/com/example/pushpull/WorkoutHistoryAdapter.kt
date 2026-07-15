@@ -7,14 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pushpull.databinding.WorkoutHistoryEntryBinding
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeFormatBuilder
 import kotlinx.datetime.format.char
 import kotlinx.serialization.json.Json
 
 
 class WorkoutHistoryAdapter(
 ) : RecyclerView.Adapter<WorkoutHistoryAdapter.ViewHolder>() {
-    private val values: MutableList<WorkoutHistoryEntry> = WorkoutHistoryEntry.getPlaceholders()
+    private val values: MutableList<WorkoutHistoryEntry> = RoutineContent.workoutHistory
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -38,7 +37,7 @@ class WorkoutHistoryAdapter(
             this.char(' ')
             this.hour(); this.char(':'); this.minute()
         }
-        holder.binding.startDatetime.text = workoutEntry.datetime.format(datetimeFormat)
+        holder.binding.startDatetime.text = workoutEntry.startDateTime.format(datetimeFormat)
 
 
         holder.binding.duration.text = workoutEntry.duration.toComponents { hours, minutes, seconds, _ ->

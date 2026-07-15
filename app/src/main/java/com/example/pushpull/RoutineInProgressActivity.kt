@@ -14,7 +14,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.json.Json
+import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
@@ -26,8 +29,6 @@ class RoutineInProgressActivity : AppCompatActivity() {
 
     var duration: Duration = Duration.ZERO
     var timerJob: Job? = null
-
-    var routineChanged = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,18 +45,21 @@ class RoutineInProgressActivity : AppCompatActivity() {
         }
 
         val routineIndex = this.intent.getIntExtra("routine_index", -1)
-        this.routine = RoutineContent.routines!![routineIndex]
+        this.routine = RoutineContent.routines[routineIndex].deepCopy()
 
         this.binding.routineInProgressName.text = this.routine.name
 
-        val adapter = RoutineEditExercisesAdapter(this.routine.exercises) {
-            this.routineChanged = true
-        }
+        val adapter = RoutineEditExercisesAdapter(this.routine.exercises)
+
         this.binding.routineEditExerciseList.adapter = adapter
         this.binding.routineEditExerciseList.layoutManager = LinearLayoutManager(this)
 
-        this.binding.cancelWorkoutButton.setOnClickListener { anchorView ->
-            this.confirmCancelWorkout(anchorView.context)
+        this.binding.cancelWorkoutButton.setOnClickListener {
+            this.confirmCancelWorkout(this@RoutineInProgressActivity)
+        }
+
+        this.binding.saveWorkoutButton.setOnClickListener {
+            this.saveWorkout()
         }
 
         this.onBackPressedDispatcher.addCallback(this) {
@@ -63,6 +67,15 @@ class RoutineInProgressActivity : AppCompatActivity() {
         }
 
         this.startTimer()
+    }
+
+    fun saveWorkout() {
+        val preferences = this.getSharedPreferences("routine_exercise_prefs", Context.MODE_PRIVATE)
+        val timezone = TimeZone.currentSystemDefault()
+        val now = Clock.System.now().toLocalDateTime(timezone)
+        val workoutEntry = WorkoutHistoryEntry(this.routine.deepCopy(), now, this.duration)
+        RoutineContent.saveWorkout(workoutEntry, preferences)
+        this.finish()
     }
 
     fun startTimer() {
@@ -81,7 +94,7 @@ class RoutineInProgressActivity : AppCompatActivity() {
         this.timerJob = this.lifecycleScope.launch {
             while (true) {
                 updateUI()
-                delay(1000.milliseconds)
+                delay(1.seconds)
                 this@RoutineInProgressActivity.duration += 1.seconds
             }
         }

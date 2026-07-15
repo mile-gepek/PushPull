@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             RoutineContent.loadExercises(preferences)
             RoutineContent.loadRoutines(preferences)
         }
+        RoutineContent.loadWorkoutHistory(preferences)
 
         this.binding.viewPager2.adapter = MainPagerAdapter(this)
 

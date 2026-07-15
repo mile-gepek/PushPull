@@ -18,7 +18,9 @@ class WorkoutHistoryFragment : Fragment() {
         this.binding = WorkoutHistoryListBinding.inflate(inflater, container, false)
 
 
-        this.binding.list.adapter = WorkoutHistoryAdapter()
+        val adapter = WorkoutHistoryAdapter()
+        this.binding.list.adapter = adapter
+        RoutineContent.workoutHistoryAdapter = adapter
         this.binding.list.layoutManager = LinearLayoutManager(this.binding.root.context)
 
         return this.binding.root

@@ -35,15 +35,11 @@ class RoutineEditExercisesAdapter(private val exercises: MutableList<Exercise>, 
             val lastSet = if (exercise.exerciseSets.isEmpty()) {
                 ExerciseSet(0.0, 0.0)
             } else {
-                exercise.exerciseSets.last()
+                exercise.exerciseSets.last().copy()
             }
             exercise.exerciseSets.add(lastSet)
             this.onChanged?.invoke()
             adapter.notifyItemInserted(exercise.exerciseSets.size)
-        }
-
-        holder.binding.addSetButton.setOnContextClickListener { anchorView ->
-            true
         }
 
         holder.binding.removeExerciseButton.setOnClickListener { anchorView ->

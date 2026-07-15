@@ -1,5 +1,6 @@
 package com.example.pushpull
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,10 +28,17 @@ class RoutineListFragment : Fragment() {
 
 
         this.binding.addRoutineButton.setOnClickListener {
-            val intent = Intent(this.binding.root.context, RoutineInProgressActivity::class.java)
+            val intent = Intent(this.binding.root.context, EditRoutineActivity::class.java)
             this.startActivity(intent)
         }
 
         return this.binding.root
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        super.onResume()
+
+        this.binding.list.adapter?.notifyDataSetChanged()
     }
 }

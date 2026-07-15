@@ -42,10 +42,12 @@ class RoutineListAdapter(
                         this.editRoutine(position, anchorView.context)
                         true
                     }
+
                     R.id.routine_delete -> {
                         this.confirmDelete(anchorView.context, position)
                         true
                     }
+
                     else -> false
                 }
             }
@@ -57,14 +59,12 @@ class RoutineListAdapter(
         }
     }
 
-
     fun startRoutine(routineIndex: Int, context: Context) {
         val intent = Intent(context, RoutineInProgressActivity::class.java).apply {
             this.putExtra("routine_index", routineIndex)
         }
         context.startActivity(intent)
     }
-
 
     fun editRoutine(routineIndex: Int, context: Context) {
         val intent = Intent(context, EditRoutineActivity::class.java).apply {
@@ -74,14 +74,15 @@ class RoutineListAdapter(
     }
 
     private fun confirmDelete(context: Context, routineIndex: Int) {
-        val routine = RoutineContent.routines!![routineIndex]
+        val routine = RoutineContent.routines[routineIndex]
         MaterialAlertDialogBuilder(context)
             .setTitle("Delete routine?")
             .setMessage("This will permanently delete the workout routine \"${routine.name}\". This can't be undone.")
             .setPositiveButton("Delete") { _, _ ->
-                println("Deleting routine")
-                // actual deletion logic here
-                // e.g. mutableRoutines.remove(routine); recyclerView.adapter?.notifyDataSetChanged()
+                val preferences =
+                    context.getSharedPreferences("routine_exercise_prefs", Context.MODE_PRIVATE)
+                RoutineContent.deleteRoutine(routineIndex, preferences)
+                this.notifyItemRemoved(routineIndex)
             }
             .setNegativeButton("Cancel", null)
             .show()
@@ -89,5 +90,6 @@ class RoutineListAdapter(
 
     override fun getItemCount(): Int = this.routines.size
 
-    inner class RoutineViewHolder(val binding: RoutineEntryBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class RoutineViewHolder(val binding: RoutineEntryBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

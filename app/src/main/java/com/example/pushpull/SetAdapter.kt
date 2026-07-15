@@ -2,6 +2,7 @@ package com.example.pushpull
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pushpull.databinding.SetItemBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,16 +24,54 @@ class SetAdapter(
         return SetViewHolder(binding)
     }
 
+    fun formatWithoutTrailingDecimals(value: Double): String {
+        if (value == value.toLong().toDouble()) {
+            return value.toLong().toString()
+        }
+        return value.toString()
+    }
+
     override fun onBindViewHolder(
         holder: SetViewHolder,
         position: Int
     ) {
         val set = this.exerciseSets[position]
         holder.binding.setNumber.text = (position + 1).toString()
-        holder.binding.weightKg.setText(set.weightKg.toString())
-        holder.binding.reps.setText(set.reps.toString())
+        val weightFormatted = this.formatWithoutTrailingDecimals(set.weightKg)
+        val repsFormatted = this.formatWithoutTrailingDecimals(set.reps)
 
         if (this.editable) {
+            holder.binding.weightKg.setHint(this.formatWithoutTrailingDecimals(set.weightKg))
+            holder.binding.reps.setHint(this.formatWithoutTrailingDecimals(set.reps))
+        } else {
+            holder.binding.weightKg.setText(weightFormatted)
+            holder.binding.reps.setText(repsFormatted)
+        }
+
+        val initialWeight = set.weightKg
+        val initialReps = set.reps
+
+        if (this.editable) {
+            holder.binding.weightKg.addTextChangedListener { newWeightString ->
+                this.onChanged?.invoke()
+                if (newWeightString.isNullOrBlank()) {
+                    set.weightKg = initialWeight
+                    return@addTextChangedListener
+                }
+                val newWeight = newWeightString.toString().toDoubleOrNull()
+                set.weightKg = newWeight ?: 0.0
+            }
+
+            holder.binding.reps.addTextChangedListener { newRepString ->
+                this.onChanged?.invoke()
+                if (newRepString.isNullOrBlank()) {
+                    set.reps = initialReps
+                    return@addTextChangedListener
+                }
+                val newReps = newRepString.toString().toDoubleOrNull()
+                set.reps = newReps ?: 0.0
+            }
+
             holder.binding.setNumber.setOnClickListener { anchorView ->
                 MaterialAlertDialogBuilder(anchorView.context)
                     .setTitle("Remove set?")

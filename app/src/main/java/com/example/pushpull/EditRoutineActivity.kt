@@ -1,6 +1,7 @@
 package com.example.pushpull
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.addCallback
@@ -31,7 +32,7 @@ class EditRoutineActivity: AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK) {
             val exerciseIndex = result.data?.getIntExtra("exercise_index", -1)!!
             if (exerciseIndex >= 0) {
-                val exercise = RoutineContent.exercises!![exerciseIndex]
+                val exercise = RoutineContent.exercises[exerciseIndex]
                 this.routine.exercises.add(exercise)
                 this.binding.routineEditExerciseList.adapter?.notifyItemInserted(this.routine.exercises.size)
                 this.onChange()
@@ -49,14 +50,15 @@ class EditRoutineActivity: AppCompatActivity() {
 
         val routineIndex = this.intent.getIntExtra("routine_index", -1)
         if (routineIndex >= 0) {
-            this.routine = RoutineContent.routines!![routineIndex]
+            this.routine = RoutineContent.routines[routineIndex].deepCopy()
         } else {
             this.routine = RoutineContent.RoutineItem("New routine")
         }
 
 
         this.binding.editRoutineName.setText(this.routine.name)
-        this.binding.editRoutineName.addTextChangedListener{
+        this.binding.editRoutineName.addTextChangedListener{ newName ->
+            this.routine.name = newName.toString()
             this.onChange()
         }
 
@@ -67,10 +69,17 @@ class EditRoutineActivity: AppCompatActivity() {
         this.binding.addExerciseButton.setOnClickListener {
             val intent = Intent(this, ExerciseSelect::class.java)
             this.addExerciseRegister.launch(intent)
+            this.onChange()
         }
 
-        this.binding.saveWorkoutButton.setOnClickListener {
-
+        this.binding.saveRoutineButton.setOnClickListener {
+            val preferences = this.getSharedPreferences("routine_exercise_prefs", Context.MODE_PRIVATE)
+            if (routineIndex >= 0) {
+                RoutineContent.saveRoutine(routineIndex, this.routine, preferences)
+            } else {
+                RoutineContent.addRoutine(this.routine, preferences)
+            }
+            this.finish()
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(this.findViewById(R.id.main)) { v, insets ->
